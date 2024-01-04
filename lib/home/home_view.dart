@@ -63,6 +63,7 @@ class _HomeViewState extends State<HomeView> with Base {
       appBar: AppBar(
         title: const Text("Barcode Generator"),
         backgroundColor: colorConstant.firstGradient,
+        centerTitle: true,
       ),
       bottomNavigationBar: Container(
         height: context.dynamicHeight(0.08),
