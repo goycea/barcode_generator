@@ -13,11 +13,11 @@ class BarcodeGeneratorPage extends StatefulWidget {
 class _BarcodeGeneratorPageState extends State<BarcodeGeneratorPage> with Base {
   String? result;
   final TextEditingController seriesIDController = TextEditingController();
-  final TextEditingController kgController = TextEditingController();
-  final TextEditingController gasTypeController = TextEditingController();
-  final TextEditingController costumerIDController = TextEditingController();
-  final TextEditingController issueDateController = TextEditingController();
-  final TextEditingController receiptDateController = TextEditingController();
+  final TextEditingController productNameController = TextEditingController();
+  final TextEditingController farmerNameController = TextEditingController();
+  final TextEditingController harvestPlaceController = TextEditingController();
+  final TextEditingController harvestSeasonController = TextEditingController();
+  final TextEditingController riskGroupController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -52,7 +52,7 @@ class _BarcodeGeneratorPageState extends State<BarcodeGeneratorPage> with Base {
                   ),
                 ),
                 labelText: "Series ID",
-                hintText: 'Enter Series ID of tube',
+                hintText: 'Enter Series ID of the product',
               ),
               controller: seriesIDController,
             ),
@@ -67,10 +67,10 @@ class _BarcodeGeneratorPageState extends State<BarcodeGeneratorPage> with Base {
                     width: 2.0,
                   ),
                 ),
-                labelText: "KG",
-                hintText: 'Enter KG of tube',
+                labelText: "Product Name",
+                hintText: 'Enter the product name',
               ),
-              controller: kgController,
+              controller: productNameController,
             ),
             SizedBox(
               height: context.dynamicHeight(0.04),
@@ -83,10 +83,10 @@ class _BarcodeGeneratorPageState extends State<BarcodeGeneratorPage> with Base {
                     width: 2.0,
                   ),
                 ),
-                labelText: "Gas Type",
-                hintText: 'Enter gas type of tube',
+                labelText: "Farmer Name",
+                hintText: 'Enter the farmer name',
               ),
-              controller: gasTypeController,
+              controller: farmerNameController,
             ),
             SizedBox(
               height: context.dynamicHeight(0.04),
@@ -99,10 +99,10 @@ class _BarcodeGeneratorPageState extends State<BarcodeGeneratorPage> with Base {
                     width: 2.0,
                   ),
                 ),
-                labelText: "Customer ID",
-                hintText: 'Enter Customer ID',
+                labelText: "Harvest Place",
+                hintText: 'Enter the harvest place',
               ),
-              controller: costumerIDController,
+              controller: harvestPlaceController,
             ),
             SizedBox(
               height: context.dynamicHeight(0.04),
@@ -115,10 +115,10 @@ class _BarcodeGeneratorPageState extends State<BarcodeGeneratorPage> with Base {
                     width: 2.0,
                   ),
                 ),
-                labelText: "Date of Issue",
-                hintText: 'Enter Date of Issue',
+                labelText: "Harvest Season",
+                hintText: 'Enter the harvest season',
               ),
-              controller: issueDateController,
+              controller: harvestSeasonController,
             ),
             SizedBox(
               height: context.dynamicHeight(0.04),
@@ -131,10 +131,10 @@ class _BarcodeGeneratorPageState extends State<BarcodeGeneratorPage> with Base {
                     width: 2.0,
                   ),
                 ),
-                labelText: "Date of Receipt",
-                hintText: 'Enter Date of Receipt',
+                labelText: "Risk Group",
+                hintText: 'Enter the risk group of disease',
               ),
-              controller: receiptDateController,
+              controller: riskGroupController,
             ),
             SizedBox(
               height: context.dynamicHeight(0.04),
@@ -143,7 +143,7 @@ class _BarcodeGeneratorPageState extends State<BarcodeGeneratorPage> with Base {
               onPressed: () {
                 setState(() {
                   result =
-                      "'series_id': ${seriesIDController.text}, 'kg': ${kgController.text}, 'gas_type': ${gasTypeController.text}, 'customer_id':${costumerIDController.text}, 'date_of_issue': ${issueDateController.text}, 'date_of_receipt': ${receiptDateController.text}";
+                      "'series_id': ${seriesIDController.text}, 'product_name': ${productNameController.text}, 'farmer_name': ${farmerNameController.text}, 'harvest_place':${harvestPlaceController.text}, 'harvest_season': ${harvestSeasonController.text}, 'risk_group': ${riskGroupController.text}";
                 });
               },
               child: Text("Generate"),
