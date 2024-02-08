@@ -8,7 +8,7 @@
     </queries>
 
     <application
-        android:label="barcode_example"
+        android:label="QR OKUYUCU"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

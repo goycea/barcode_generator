@@ -30,26 +30,6 @@ class _HomeViewState extends State<HomeView> with Base {
     images.add(imageTemporary);
     setState(() {});
   }
-  /*Container(
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          colorConstant.firstGradient,
-                          colorConstant.secondGradient
-                        ])),
-                child: IconButton(
-                    onPressed: () {
-                      pickImageGalery(ImageSource.gallery);
-                    },
-                    icon: const Icon(
-                      Icons.camera_alt_outlined,
-                      color: Colors.white,
-                    )),
-              ),*/
-
   int _selectedIndex = 0;
   static final List<Widget> _pages = <Widget>[
     const BarcodeGeneratorPage(),
@@ -59,19 +39,19 @@ class _HomeViewState extends State<HomeView> with Base {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: colorConstant.white,
       appBar: AppBar(
-        title: const Text("Barcode Generator"),
-        backgroundColor: colorConstant.firstGradient,
+        title: const Text("QR OKUYUCU"),
+        backgroundColor: colorConstant.blue,
         centerTitle: false,
       ),
       bottomNavigationBar: Container(
         height: context.dynamicHeight(0.08),
-        color: colorConstant.larkspurViolet,
+        color: colorConstant.blue,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GNav(
-              backgroundColor: colorConstant.larkspurViolet,
+              backgroundColor: colorConstant.blue,
               activeColor: colorConstant.white,
               color: colorConstant.white,
               tabBackgroundColor: colorConstant.coldSteel,
@@ -83,12 +63,12 @@ class _HomeViewState extends State<HomeView> with Base {
               tabs: [
                 GButton(
                     icon: Icons.add,
-                    text: "Barcode Generator",
+                    text: "QR Oluşturucu",
                     textStyle:
                         TextStyle(fontSize: 22, color: colorConstant.white)),
                 GButton(
                     icon: Icons.barcode_reader,
-                    text: "Barcode Reader",
+                    text: "QR Okuyucu",
                     textStyle:
                         TextStyle(fontSize: 22, color: colorConstant.white)),
               ],

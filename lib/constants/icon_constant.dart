@@ -10,4 +10,7 @@ class IconConstant {
   final restartIcon = Icon(Icons.restart_alt_rounded);
   final menuIcon = Icon(Icons.menu);
   final worldIcon = Icon(Icons.add_chart);
+  final photoIcon = Icon(Icons.add_a_photo_outlined);
+  final speakerIcon = Icon(Icons.speaker);
+
 }

@@ -1,3 +1,4 @@
+import 'package:barcode_example/core/base.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -11,14 +12,14 @@ class BarcodeReaderPage extends StatefulWidget {
 
 }
 
-class _BarcodeReaderPageState extends State<BarcodeReaderPage> {
+class _BarcodeReaderPageState extends State<BarcodeReaderPage> with Base {
   FlutterTts flutterTts = FlutterTts();
   double volume = 1.0;
   double pitch = 1.0;
   double speechRate = 0.5;
   List<String>? languages;
-  String langCode = 'en-US';
-  String _scanBarcode = 'Unknown';
+  String langCode = 'tr-TR';
+  String _scanBarcode = 'Bilinmiyor';
 
   Future<void> startBarcodeScanStream() async {
     FlutterBarcodeScanner.getBarcodeStreamReceiver(
@@ -79,29 +80,40 @@ class _BarcodeReaderPageState extends State<BarcodeReaderPage> {
             children: <Widget>[
               ElevatedButton.icon(
                 //When pressed, text to speech will be activated
-                onPressed: () => _speaking("Welcome to Barcode Scan App"),
-                icon: Icon(Icons.speaker, color: Colors.white), // Barcode icon
-                label: const Text('LISTEN'),
+                onPressed: () async {
+                  await flutterTts.setEngine("com.google.android.tts");
+                  _speaking(_scanBarcode);},
+                icon: Icon(Icons.speaker, color: colorConstant.white), // Barcode icon
+                label: const Text('DİNLE'),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.redAccent, // Red background
+                  primary: colorConstant.yellow, // Red background
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30), // Increased padding for bigger button
                 ),
               ),
-              ElevatedButton(
-                  onPressed: () => scanQR(), child: Text('QR SCAN')),
-              ElevatedButton(
-                  onPressed: () => startBarcodeScanStream(),
-                  child: Text('Start barcode scan stream')),
-              Text('Scan result : $_scanBarcode\n',
+              ElevatedButton.icon(
+                  onPressed: () => scanQR(),
+                  icon: Icon(Icons.add_a_photo_outlined, color: colorConstant.white),
+                  label: const Text('QR TARAMA'),
+                  style: ElevatedButton.styleFrom(
+                    primary: colorConstant.pomegranateFlowerColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+    )
+              ),
+
+
+              Text('Tarama Sonucu: $_scanBarcode\n',
                   style: TextStyle(fontSize: 20))
             ]));
   }
   //Text to Speech the given string
   Future _speaking(text) async {
-    await flutterTts.setLanguage("en-US");
+    await flutterTts.setLanguage("tr-TR");
     await flutterTts.setPitch(1);
     await flutterTts.speak(text);
   }
